@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+
+    body {
+        @apply text-base min-h-[100vh] transition-all duration-300;
+    }
+    a {
+        @apply text-base text-[17px];
+    }
+
+}
