@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout.tsx";
 import ShopListPage from "./Pages/ShopListPage.tsx";
 import ShopDetailPage from "./Pages/ShopDetailPage.tsx";
-import { CartProvider } from "./assets/CartContext.tsx";
-import Cart from "./Components/Cart.tsx";
+// import { CartProvider } from "./assets/CartContext.tsx";
+// import Cart from "./Components/Cart.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,18 +21,18 @@ const router = createBrowserRouter([
         path: "/:id",
         element: <ShopDetailPage />,
       },
-      {
-        path: "/cart",
-        element: <Cart />,
-      }
+    //   {
+    //     path: "/cart",
+    //     element: <Cart />,
+    //   }
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CartProvider>
+    {/* <CartProvider> */}
       <RouterProvider router={router} />
-    </CartProvider>
+    {/* </CartProvider> */}
   </StrictMode>
 );

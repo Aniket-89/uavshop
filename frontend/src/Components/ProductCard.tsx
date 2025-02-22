@@ -1,10 +1,19 @@
 import Button from "./Button";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 
-const api = "http://192.168.1.21:8000";
+const api = API_BASE_URL;
 
-const ProductCard: React.FC<{ product: any }> = ({ product }) => {
+interface Product {
+  image: string;
+  name: string;
+  summary: string;
+  price: number;
+  id: string;
+}
+
+const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <div className="bg-white sm:w-72 w-[46%] min-w-[230px] mx-auto my-6 flex flex-col items-center justify-between rounded lg:px-2 py-4 p-1 group overflow-hidden">
       <div className="overflow-hidden w-full">

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
+import { API_BASE_URL } from '../config';
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
   description: string;
+  summary: string;
   image: string;
   price: number;
 }
@@ -17,14 +19,18 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://192.168.1.21:8000/api/v1/products');
+        const response = await fetch(`${API_BASE_URL}/products`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
         const data: Product[] = await response.json();
         setProducts(data);
-      } catch (err: any) {
-        setError(err.message || 'Something went wrong');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('Something went wrong');
+        }
       } finally {
         setLoading(false);
       }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "../assets/CartContext";
+// import { useCart } from "../assets/CartContext";
 import Button from "../Components/Button";
 
 interface Product {
@@ -17,13 +17,13 @@ const ShopDetailPage: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { addToCart } = useCart();
+//   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
-    if (product) {
-      addToCart(product);
-    }
-  };
+//   const handleAddToCart = () => {
+//     if (product) {
+//       addToCart(product);
+//     }
+//   };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -34,8 +34,12 @@ const ShopDetailPage: React.FC = () => {
         }
         const data: Product = await response.json();
         setProduct(data);
-      } catch (err: any) {
-        setError(err.message || "Something went wrong");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Something went wrong");
+        }
       } finally {
         setLoading(false);
       }
