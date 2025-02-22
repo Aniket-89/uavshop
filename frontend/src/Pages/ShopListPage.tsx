@@ -1,21 +1,23 @@
-import ProductList from "../Components/ProductList"
-import Banner from "../Components/Banner"
+import ProductList from "../Components/ProductList";
+import Banner from "../Components/Banner";
+import FilterSection from "../Components/FilterSection";
 
 const ShopListPage = () => {
   return (
     <>
-        <Banner />
-        <div className="flex w-[80%] max-w-7xl mx-auto">
-            <div className="bg-green-200 w-1/3 h-[60vh]">
-                
-            </div>
-            <div className="bg-red-200 w-2/3 h-[90vh]">
-                <ProductList />
-            </div>
+      <Banner />
+      <div className="md:flex lg:w-[90%] max-w-7xl mx-auto">
+        <div className="bg-green-200 hidden lg:flex md:w-1/3 h-[60vh]">
+            <FilterSection onFilter={"None"}/>
         </div>
-        <div className="bg-violet-100 w-full h-40"></div>
+        <div className="bg-gray-100 w-full md:min-h-[40vh] my-16 min-h-[60vh]">
+          <h2 className="text-2xl font-semibold p-4">Products</h2>
+          <ProductList />
+        </div>
+      </div>
+      {/* <div className="bg-violet-100 w-full h-40"></div> */}
     </>
-  )
-}
+  );
+};
 
-export default ShopListPage
+export default ShopListPage;

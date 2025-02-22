@@ -17,7 +17,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/products');
+        const response = await fetch('http://192.168.1.21:8000/api/v1/products');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
@@ -34,10 +34,10 @@ const ProductList: React.FC = () => {
   }, []);
 
   if (loading) return <div>Loading products...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div className='flex justify-center items-center h-[60vh] text-3xl font-semibold'>Error: {error}</div>;
 
   return (
-    <div className="product-list">
+    <div className="product-list flex w-full flex-wrap">
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard product={product}/>

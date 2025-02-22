@@ -1,6 +1,19 @@
 from rest_framework import serializers
 from django.conf import settings
-from .models import Product
+from .models import Product, Category
+
+
+class ProductListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'image', 'summary', 'price']
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -13,6 +26,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'id', 
             'name', 
             'description', 
+            'summary',
             'price', 
             'quantity', 
             'image', 

@@ -4,31 +4,31 @@ import { useCart } from "../assets/CartContext";
 import Button from "../Components/Button";
 
 interface Product {
-  id?: number;
-  name?: string;
-  description: string;
-  quantity?: number;
+  id: number;
+  name: string;
+  description: string; // HTML content from API
+  summary: string;
   image: string;
   price: number;
 }
 
-const ShopDetailPage: React.FC<Product> = () => {
-  const { id } = useParams<{ id: string }>(); // Get product ID from URL params
+const ShopDetailPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart(product);
+    if (product) {
+      addToCart(product);
+    }
   };
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8000/api/v1/products/${id}`
-        );
+        const response = await fetch(`http://192.168.1.21:8000/api/v1/products/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
         }
@@ -44,37 +44,46 @@ const ShopDetailPage: React.FC<Product> = () => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div>Loading product details...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!product) return <div>Product not found.</div>;
+  if (loading) return <div className="text-center mt-10">Loading product details...</div>;
+  if (error) return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
+  if (!product) return <div className="text-center mt-10 text-gray-500">Product not found.</div>;
 
   return (
-    <div className="">
-      <div className="p-4 max-w-7xl mx-auto h-[50vh] flex gap-2">
-        <div className="w-1/2 bg-blue-300 h-full">
+    <div className="p-4 max-w-7xl mx-auto">
+      {/* Product Overview Section */}
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Image Section */}
+        <div className="md:w-1/2 bg-gray-200 rounded-lg overflow-hidden">
           <img
-            src={
-              product.image.startsWith("http")
-                ? product.image
-                : `http://127.0.0.1:8000${product.image}`
-            }
+            src={product.image.startsWith("http") ? product.image : `http://192.168.1.21:8000${product.image}`}
             alt={product.name}
-            className="h-[440px] w-full object-cover object-center"
+            className="h-[400px] w-full object-cover"
           />
         </div>
-        <div className="w-1/2 bg-red-300 h-full flex flex-col gap-2 p-8 justify-between">
-          <div className="">
+
+        {/* Product Details Section */}
+        <div className="md:w-1/2 flex flex-col justify-between">
+          <div className="grid gap-4">
             <h2 className="text-3xl font-bold">{product.name}</h2>
-            <p className="text-xl font-semibold mt-2">Rs. {product.price}</p>
-            <p className="text-gray-700">{product.description}</p>
+            <p>{product.summary}</p>
+            <p className="text-2xl font-semibold mt-2 text-gray-800">Rs. {product.price}</p>
           </div>
 
-          <Button className="" onClick={handleAddToCart}>
+          {/* Add to Cart Button */}
+          {/* <Button className="mt-4 w-full md:w-auto" onClick={handleAddToCart}>
             Add to Cart
-          </Button>
+          </Button> */}
+          <Button className="mt-4 w-full md:w-auto"><a href="tel:+918130589012">Call Now</a></Button>
         </div>
       </div>
-      <div className="w-full max-w-7xl mx-auto bg-green-300 h-[50vh]"></div>
+      {/* Full Description Section */}
+      <div className="mt-8 px-6 py-8 bg-gray-100 rounded-lg">
+        <h2 className="text-2xl font-semibold border-b border-gray-300 pb-2">Description</h2>
+        <div
+          className="mt-4 text-gray-700 grid gap-4"
+          dangerouslySetInnerHTML={{ __html: product.description }} // Render HTML description
+        />
+      </div>
     </div>
   );
 };

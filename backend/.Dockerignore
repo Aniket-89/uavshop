@@ -1,0 +1,41 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables & secret files
+.env
+*.env
+secrets.json
+
+# Ignore virtual environment
+.backend/
+*.backend/
+venv/
+*.venv/
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+*.swp
+
+# Ignore logs and database files
+*.log
+*.sqlite3
+
+# Ignore static & media (if stored locally, but not in Docker)
+staticfiles/
+media/
+frontend/
+
+# Ignore Docker artifacts
+.dockerignore
+Dockerfile
+
+# Ignore compiled dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore Git
+.git
+.gitignore

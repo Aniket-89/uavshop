@@ -6,7 +6,7 @@
 @layer base {
 
     body {
-        @apply text-base min-h-[100vh] transition-all duration-300;
+        @apply text-base min-h-[100vh] transition-all duration-300 overflow-x-hidden;
     }
     a {
         @apply text-base text-[17px];
