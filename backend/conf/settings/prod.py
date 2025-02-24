@@ -1,7 +1,7 @@
 import os
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
@@ -21,6 +21,7 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_HSTS_PRELOAD = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
@@ -46,8 +47,8 @@ class MediaStorage(S3Boto3Storage):
     location = 'media'
     default_acl = 'private'
 
-DEFAULT_FILE_STORAGE = 'myproject.settings.MediaStorage'
-STATICFILES_STORAGE = 'myproject.settings.StaticStorage'
+DEFAULT_FILE_STORAGE = 'conf.settings.base.MediaStorage'
+STATICFILES_STORAGE = 'conf.settings.base.StaticStorage'
 
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'

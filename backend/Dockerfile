@@ -1,35 +1,49 @@
-# Use official Python image
-FROM python:3.13-slim
+# Stage 1: Builder Stage
+FROM python:3.12-slim as builder
 
-RUN mkdir /app
+# Environment variables for proper Python behavior
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
-# Set working directory
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /install
+
+# Copy requirements and install Python dependencies into a separate location
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --prefix=/install -r requirements.txt
+
+# Stage 2: Final Stage
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Create a non-root user for security
+RUN adduser --disabled-password --gecos '' django
+
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+# Copy installed dependencies from the builder stage
+COPY --from=builder /install /usr/local
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y gcc libpq-dev
+# Copy your Django project code into the container
+COPY . /app
 
-# Copy dependencies files
-COPY requirements.txt .
+# (Optional) Collect static files if needed
+# RUN python manage.py collectstatic --noinput
 
-# Install dependencies
-RUN pip install --upgrade pip
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Use official Python image as base
-
-# Copy project files
-COPY . .
-
-COPY .env .env
-
-# Expose port
+# Expose Gunicorn port
 EXPOSE 8000
 
-# Start Django
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "conf.wsgi:application"]
+# Switch to non-root user
+USER django
 
+# Run Gunicorn to serve your Django application
+CMD ["gunicorn", "conf.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]

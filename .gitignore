@@ -1,0 +1,66 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django specific files
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+
+# Virtual environment folder
+venv/
+env/
+.venv/
+.env/
+.backend/
+
+
+# Django migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# IDE/editor specific files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# dotenv environment variables files
+.env
+.env.local
+.env.development
+.env.production
+.env.testing
+
+# Coverage reports (if you're using coverage.py)
+.coverage
+*.cover
+.coverage.*
+
+# mypy and other type-checking tools
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Docker files (if using Docker)
+docker-compose.override.yml
+*.dockerfile
+.docker/
