@@ -16,13 +16,15 @@ services:
 
   nginx:
     image: nginx:latest
+    restart: unless-stopped
     container_name: nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - certs:/etc/letsencrypt
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
       - static_volume:/app/static
     depends_on:
       - django
@@ -31,8 +33,10 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - certs:/etc/letsencrypt
-    entrypoint: "/bin/sh -c 'while true; do certbot renew --quiet && sleep 12h; done'"
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    # entrypoint: "/bin/sh -c 'while true; do certbot renew --quiet && sleep 12h; done'"
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email admin@droneanatomy.com -d api.droneanatomy.com --agree-tos
 
 volumes:
   certs:
