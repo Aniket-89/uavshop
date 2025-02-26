@@ -11,6 +11,7 @@ interface Product {
   summary: string;
   image: string;
   price: number;
+  images: { id: number; image: string }[];
 }
 
 const ShopDetailPage: React.FC = () => {
@@ -18,13 +19,13 @@ const ShopDetailPage: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-//   const { addToCart } = useCart();
+  //   const { addToCart } = useCart();
 
-//   const handleAddToCart = () => {
-//     if (product) {
-//       addToCart(product);
-//     }
-//   };
+  //   const handleAddToCart = () => {
+  //     if (product) {
+  //       addToCart(product);
+  //     }
+  //   };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,43 +50,66 @@ const ShopDetailPage: React.FC = () => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div className="text-center mt-10">Loading product details...</div>;
-  if (error) return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
-  if (!product) return <div className="text-center mt-10 text-gray-500">Product not found.</div>;
+  if (loading)
+    return <div className="text-center mt-10">Loading product details...</div>;
+  if (error)
+    return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
+  if (!product)
+    return (
+      <div className="text-center mt-10 text-gray-500">Product not found.</div>
+    );
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
       {/* Product Overview Section */}
       <div className="flex flex-col md:flex-row gap-6">
         {/* Image Section */}
-        <div className="md:w-1/2 bg-gray-200 rounded-lg overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="h-[400px] w-full object-cover"
-          />
+        <div className="md:w-1/2">
+          <div className=" bg-gray-200 rounded-lg overflow-hidden">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="max-h-[724px] min-h-[400px]  w-full object-cover"
+            />
+          </div>
+          <div className="flex gap-2 mt-4">
+            {product.images.map((img) => (
+              <img
+                key={img.id}
+                src={img.image}
+                alt={product.name}
+                className="w-32 h-32 rounded-sm"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Product Details Section */}
         <div className="md:w-1/2 flex flex-col justify-between">
           <div className="grid gap-4">
             <h2 className="text-3xl font-bold">{product.name}</h2>
+            <p className="text-2xl font-semibold mt-2 text-gray-800">
+              Rs. {product.price}
+            </p>
             <p>{product.summary}</p>
-            <p className="text-2xl font-semibold mt-2 text-gray-800">Rs. {product.price}</p>
           </div>
 
           {/* Add to Cart Button */}
           {/* <Button className="mt-4 w-full md:w-auto" onClick={handleAddToCart}>
             Add to Cart
           </Button> */}
-          <Button className="mt-4 w-full md:w-auto"><a href="tel:+918130589012">Call Now</a></Button>
+          <Button className="mt-4 w-full md:w-auto">
+            <a href="tel:+918130589012">Call Now</a>
+          </Button>
         </div>
       </div>
       {/* Full Description Section */}
       <div className="mt-8 px-6 py-8 bg-gray-100 rounded-lg">
-        <h2 className="text-2xl font-semibold border-b border-gray-300 pb-2">Description</h2>
+        <h2 className="text-2xl font-semibold border-b border-gray-300 pb-2">
+          Description
+        </h2>
         <div
-          className="mt-4 text-gray-700 grid gap-4"
+          className="mt-4 text-gray-700 grid gap-4 mx-auto"
           dangerouslySetInnerHTML={{ __html: product.description }} // Render HTML description
         />
       </div>

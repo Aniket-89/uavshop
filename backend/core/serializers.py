@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from django.conf import settings
-from .models import Product, Category
+from .models import Product, Category, ProductImage
 
 
 class ProductListSerializer(serializers.ModelSerializer):
@@ -16,9 +15,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['name']
 
 
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductImage
+        fields = ["id", "image"]
+
+
 class ProductSerializer(serializers.ModelSerializer):
     is_available = serializers.SerializerMethodField()
-    # image = serializers.SerializerMethodField()
+    images = ProductImageSerializer(many=True, read_only=True)  # Nested serializer
 
     class Meta:
         model = Product
@@ -32,14 +37,10 @@ class ProductSerializer(serializers.ModelSerializer):
             'image', 
             'is_available', 
             'created_at', 
-            'updated_at'
+            'updated_at',
+            'images'
         ]
     
     def get_is_available(self, obj):
         return obj.is_available
-    
-    # def get_image(self, obj):
-    #     request = self.context.get('request')
-    #     if obj.image:
-    #         return request.build_absolute_uri(obj.image.url) if request else f"{settings.MEDIA_URL}{obj.image}"
-    #     return None
+

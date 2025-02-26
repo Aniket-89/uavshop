@@ -20,16 +20,18 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           className="w-full sm:h-48 lg:h-56 h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
         />
       </div>
-      <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-      <p className="text-gray-600 text-center line-clamp-3">
-        {product.summary}
-      </p>
-      <span className="text-green-500 lg:text-2xl font-bold my-2">
-        Rs. {product.price}
-      </span>
-      <Link to={`/${product.id}`}>
-        <Button className="mx-4 lg:px-8">Buy Now</Button>
-      </Link>
+      <div className="grid">
+        <h3 className="text-xl font-bold mb-2 text-center">{product.name}</h3>
+        <p className="text-gray-600 text-center line-clamp-3">
+          {product.summary}
+        </p>
+        <span className="text-green-600 lg:text-2xl font-bold my-2">
+          Rs. {product.price}
+        </span>
+        <Link to={`/${product.id}`}>
+          <Button className="mx-4 lg:px-8">Buy Now</Button>
+        </Link>
+      </div>
     </div>
   );
 };
