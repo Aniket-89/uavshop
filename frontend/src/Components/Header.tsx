@@ -12,7 +12,7 @@ const Header: React.FC = () => {
       <div className="flex items-center justify-between">
         {/* Logo */}
 
-        <div className="text-2xl font-semibold z-20 h-full flex items-center gap-2"><img src={CompanyLogo} alt="" className="h-8 aspect-auto object-cover object-center" />Shop</div>
+        <div className="text-2xl font-semibold z-20 h-full flex items-center gap-2"><img src={CompanyLogo} alt="" className="h-8 aspect-auto object-cover object-center" /></div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
