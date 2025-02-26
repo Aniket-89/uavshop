@@ -12,12 +12,12 @@ interface Product {
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div className="bg-white sm:w-72 w-[46%] min-w-[230px] mx-auto my-6 flex flex-col items-center justify-between rounded lg:px-2 py-4 p-1 group overflow-hidden">
+    <div className="bg-white sm:w-72 w-[46%] min-w-[230px] mx-auto my-6 flex flex-col items-center justify-between rounded lg:px-2 py-2 p-1 group overflow-hidden">
       <div className="overflow-hidden w-full">
         <img
           src={`${product.image}`}
           alt={product.name}
-          className="w-full sm:h-48 lg:h-fit h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
+          className="w-full sm:h-48 lg:h-56 h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
         />
       </div>
       <h3 className="text-xl font-bold mb-2">{product.name}</h3>

@@ -55,7 +55,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation Menu */}
       <nav
-        className={`md:hidden bg-white text-black fixed top-0 right-0 z-10 w-3/4 h-full shadow-md py-4 transform transition-transform duration-300 ease-in-out ${
+        className={`md:hidden bg-white text-black font-semibold fixed top-0 right-0 z-10 w-3/4 h-full shadow-md py-4 transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
           <li>
             <Link
               to="/"
-              className="hover:text-gray-600"
+              className="active:text-yellow-500 focus:text-yellow-500 text-3xl"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Home
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
           <li>
             <Link
               to="/products"
-              className="hover:text-gray-600"
+              className="active:text-yellow-500 focus:text-yellow-500 text-3xl"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Products
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
           <li>
             <a
               href="https:www.droneanatomy.com/about"
-              className="hover:text-gray-600"
+              className="active:text-yellow-500 focus:text-yellow-500 text-3xl"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
           <li>
             <a
               href="https:www.droneanatomy.com/contact"
-              className="hover:text-gray-600"
+              className="active:text-yellow-500 focus:text-yellow-500 text-3xl"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
