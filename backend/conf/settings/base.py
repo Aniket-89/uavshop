@@ -37,6 +37,15 @@ FROALA_EDITOR_OPTIONS = {
     'heightMax': 600,  # Optional
 }
 
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
+
 REST_FRAMEWORK = {  
     'NON_FIELD_ERRORS_KEY': 'Please try again in some time.',
   
