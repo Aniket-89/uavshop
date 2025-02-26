@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="w-full bg-white text-black px-6 py-4 relative">
+    <header className="w-full bg-white text-black px-8 py-6 relative">
       <div className="flex items-center justify-between">
         {/* Logo */}
 
@@ -16,10 +16,10 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6">
-          <Link to="/" className="hover:text-yellow-300">Home</Link>
-          <Link to="/products" className="hover:text-yellow-300">Products</Link>
-          <a href="https:www.droneanatomy.com/about" className="hover:text-yellow-300">About</a>
-          <a href="https:www.droneanatomy.com/contact" className="hover:text-yellow-300">Contact</a>
+          <Link to="/" className="hover:text-yellow-600 hover:underline">Home</Link>
+          <Link to="/products" className="hover:text-yellow-600 hover:underline">Products</Link>
+          <a href="https:www.droneanatomy.com/about" className="hover:text-yellow-600 hover:underline">About</a>
+          <a href="https:www.droneanatomy.com/contact" className="hover:text-yellow-600 hover:underline">Contact</a>
           {/* <Link to="/cart" className="hover:text-yellow-300">Cart</Link> */}
         </nav>
 
