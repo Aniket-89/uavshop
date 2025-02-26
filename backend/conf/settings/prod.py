@@ -5,6 +5,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
+
+CSRF_TRUSTED_ORIGINS = ['http://13.201.11.103']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
