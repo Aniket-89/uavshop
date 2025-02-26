@@ -17,7 +17,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         <img
           src={`${product.image}`}
           alt={product.name}
-          className="w-full sm:h-48 h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
+          className="w-full sm:h-48 lg:h-fit h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
         />
       </div>
       <h3 className="text-xl font-bold mb-2">{product.name}</h3>
