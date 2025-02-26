@@ -1,6 +1,6 @@
 import ProductList from "../Components/ProductList";
 import Banner from "../Components/Banner";
-import FilterSection from "../Components/FilterSection";
+// import FilterSection from "../Components/FilterSection";
 
 const ShopListPage = () => {
   return (
