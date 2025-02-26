@@ -1,11 +1,19 @@
 import ProductList from "../Components/ProductList";
-import Banner from "../Components/Banner";
+import BannerCarousel from "../Components/BannerCarousel";
+import { BannerImages } from "../assets/assets";
 // import FilterSection from "../Components/FilterSection";
 
+
+
 const ShopListPage = () => {
-  return (
+
+
+    return (
     <>
-      <Banner />
+    <div className="w-full h-full">
+
+      <BannerCarousel slides={BannerImages}/>
+    </div>
       <div className="md:flex lg:w-[90%] max-w-7xl my-16 mx-auto">
         {/* <div className="bg-green-200 hidden lg:flex md:w-1/3 h-[60vh]">
             <FilterSection onFilter={(category) => console.log(category)} />
