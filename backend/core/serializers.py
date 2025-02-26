@@ -18,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     is_available = serializers.SerializerMethodField()
-    image = serializers.SerializerMethodField()
+    # image = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -38,8 +38,8 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_is_available(self, obj):
         return obj.is_available
     
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url) if request else f"{settings.MEDIA_URL}{obj.image}"
-        return None
+    # def get_image(self, obj):
+    #     request = self.context.get('request')
+    #     if obj.image:
+    #         return request.build_absolute_uri(obj.image.url) if request else f"{settings.MEDIA_URL}{obj.image}"
+    #     return None
