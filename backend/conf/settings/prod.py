@@ -23,7 +23,7 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
@@ -37,18 +37,9 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-from storages.backends.s3boto3 import S3Boto3Storage
-
-class StaticStorage(S3Boto3Storage):
-    location = 'static'
-    default_acl = 'public-read'
-
-class MediaStorage(S3Boto3Storage):
-    location = 'media'
-    default_acl = 'private'
-
-DEFAULT_FILE_STORAGE = 'conf.settings.base.MediaStorage'
-STATICFILES_STORAGE = 'conf.settings.base.StaticStorage'
-
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media files configuration
+DEFAULT_FILE_STORAGE = 'your_project.storage_backends.MediaStorage'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
