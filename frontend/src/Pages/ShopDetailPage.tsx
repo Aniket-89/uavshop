@@ -60,7 +60,7 @@ const ShopDetailPage: React.FC = () => {
         {/* Image Section */}
         <div className="md:w-1/2 bg-gray-200 rounded-lg overflow-hidden">
           <img
-            src={product.image.startsWith("http") ? product.image : `http://192.168.1.21:8000${product.image}`}
+            src={product.image.startsWith("http") ? product.image : `${product.image}`}
             alt={product.name}
             className="h-[400px] w-full object-cover"
           />
