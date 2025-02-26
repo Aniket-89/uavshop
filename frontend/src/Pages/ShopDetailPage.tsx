@@ -29,7 +29,7 @@ const ShopDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/${id}/`);
+        const response = await fetch(`${API_BASE_URL}/products/${id}/`);
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
         }
