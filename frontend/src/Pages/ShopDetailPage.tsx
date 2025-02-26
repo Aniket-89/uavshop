@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { useCart } from "../assets/CartContext";
 import Button from "../Components/Button";
+import { API_BASE_URL } from "../config";
 
 interface Product {
   id: number;
@@ -28,7 +29,7 @@ const ShopDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://192.168.1.21:8000/api/v1/products/${id}`);
+        const response = await fetch(`${API_BASE_URL}/${id}/`);
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
         }

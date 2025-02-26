@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config";
 
-const api = "http://192.168.1.21:8000"; // Adjust to your API URL
+const api = API_BASE_URL; // Adjust to your API URL
 
 interface FilterSectionProps {
   onFilter: (category: string) => void;

@@ -19,7 +19,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/products`);
+        const response = await fetch(`${API_BASE_URL}/products/`);
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }

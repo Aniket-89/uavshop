@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <Link to="/products" className="hover:text-yellow-300">Products</Link>
           <a href="https:www.droneanatomy.com/about" className="hover:text-yellow-300">About</a>
           <a href="https:www.droneanatomy.com/contact" className="hover:text-yellow-300">Contact</a>
-          <Link to="/cart" className="hover:text-yellow-300">Cart</Link>
+          {/* <Link to="/cart" className="hover:text-yellow-300">Cart</Link> */}
         </nav>
 
         {/* Mobile Menu Toggle Button */}
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
               Contact
             </a>
           </li>
-          <li>
+          {/* <li>
             <Link
               to="/cart"
               className="hover:text-gray-600"
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
             >
               Cart
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
