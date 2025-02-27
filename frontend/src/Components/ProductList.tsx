@@ -43,7 +43,7 @@ const ProductList: React.FC = () => {
   if (error) return <div className='flex justify-center items-center h-[60vh] text-3xl font-semibold'>Error: {error}</div>;
 
   return (
-    <div className="product-list flex w-full flex-wrap">
+    <div className="product-list grid grid-cols-2 md:grid-cols-3 place-items-center lg:flex overflow-auto w-full justify-center flex-wrap gap-2 mx-auto">
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard product={product}/>

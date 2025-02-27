@@ -13,3 +13,7 @@
     }
 
 }
+
+p[data-f-id="pbf"] {
+    display: none !important;
+}

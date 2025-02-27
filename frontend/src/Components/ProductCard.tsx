@@ -12,19 +12,19 @@ interface Product {
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div className="bg-white sm:w-72 w-[46%] min-w-[230px] mx-auto my-6 flex flex-col items-center justify-between rounded lg:px-2 py-2 p-1 group overflow-hidden">
+    <div className="max-w-xs bg-white rounded-sm overflow-hidden shadow-sm group">
       <div className="overflow-hidden w-full">
         <img
-          src={`${product.image}`}
+          src={`http://127.0.0.1:8000/${product.image}`}
           alt={product.name}
-          className="w-full sm:h-48 lg:h-56 h-36 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
+          className="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-in"
         />
       </div>
-      <div className="grid">
+      <div className="flex flex-col gap-1 items-center my-2">
         <h3 className="text-xl font-bold mb-2 text-center">{product.name}</h3>
-        <p className="text-gray-600 text-center line-clamp-3">
+        {/* <p className="text-gray-600 text-center line-clamp-3">
           {product.summary}
-        </p>
+        </p> */}
         <span className="text-green-600 lg:text-2xl font-bold my-2">
           Rs. {product.price}
         </span>

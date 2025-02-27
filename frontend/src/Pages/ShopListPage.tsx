@@ -18,7 +18,7 @@ const ShopListPage = () => {
         {/* <div className="bg-green-200 hidden lg:flex md:w-1/3 h-[60vh]">
             <FilterSection onFilter={(category) => console.log(category)} />
         </div> */}
-        <div className="w-full md:min-h-[40vh] min-h-[60vh]">
+        <div className="w-full mx-auto md:min-h-[40vh] min-h-[60vh] px-1">
           <h2 className="text-2xl font-semibold p-4">Products</h2>
           <ProductList />
         </div>
