@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Button from "../Components/Button";
 import { API_BASE_URL } from "../config";
 import DetailPageSkeletonLoading from "../Components/DetailPageSkeletonLoading";
+import { PaymentMethodLogos } from "../assets/assets";
 
 interface Product {
   id: number;
@@ -52,12 +53,11 @@ const ShopDetailPage: React.FC = () => {
     fetchProduct();
   }, [id]);
 
-  if (loading)
-    return <DetailPageSkeletonLoading />;
+  if (loading) return <DetailPageSkeletonLoading />;
 
   if (error)
     return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
-  
+
   if (!product)
     return (
       <div className="text-center mt-10 text-gray-500">Product not found.</div>
@@ -89,24 +89,33 @@ const ShopDetailPage: React.FC = () => {
         </div>
 
         {/* Product Details Section */}
-        <div className="md:w-1/2 flex flex-col justify-between">
+        <div className="md:w-1/2 flex mb-8 flex-col justify-between">
           <div className="grid gap-6">
             <h2 className="text-3xl font-bold font-heading">{product.name}</h2>
             <p className="text-2xl font-semibold mt-2 text-gray-800">
               &#8377;{product.price}
             </p>
             <ul className="my-4">
-                {product.features.map((feature, index) => (
-                    <li className="list-disc ml-4 font-medium" key={index}>{feature}</li>
-                ))}
+              {product.features.map((feature, index) => (
+                <li className="list-disc ml-4 font-medium" key={index}>
+                  {feature}
+                </li>
+              ))}
             </ul>
-
           </div>
 
           {/* Add to Cart Button */}
           {/* <Button className="mt-4 w-full md:w-auto" onClick={handleAddToCart}>
             Add to Cart
           </Button> */}
+          <div className="w-full border h-[140px] px-3 pt-1 bg-green-100">
+            <h4 className="text-lg ">Payment methods</h4>
+            <ul className="flex gap-8 items-center my-4 justify-center">
+                {PaymentMethodLogos.map((_, index) => (
+                    <img src={_} alt="" key={index} height={72} width={72} />
+                ))}
+            </ul>
+          </div>
           <Button className="w-full md:w-auto">
             <a href="tel:+918130589012">Call Now</a>
           </Button>
