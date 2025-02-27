@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     
     # Your apps go here
     # "rest_framework_api_key",
+    'django_json_widget',
     'rest_framework',
     'froala_editor',
     'corsheaders',

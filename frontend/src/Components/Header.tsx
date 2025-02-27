@@ -8,18 +8,18 @@ const Header: React.FC = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="w-full bg-white text-black px-8 py-6 relative">
+    <header className="w-full bg-white text-black px-8 py-8 relative max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
         {/* Logo */}
 
         <div className="text-2xl font-semibold z-20 h-full flex items-center gap-2"><img src={CompanyLogo} alt="" className="h-8 aspect-auto object-cover object-center" /></div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6">
-          <Link to="/" className="hover:text-yellow-600 hover:underline">Home</Link>
-          <Link to="/products" className="hover:text-yellow-600 hover:underline">Products</Link>
-          <a href="https:www.droneanatomy.com/about" className="hover:text-yellow-600 hover:underline">About</a>
-          <a href="https:www.droneanatomy.com/contact" className="hover:text-yellow-600 hover:underline">Contact</a>
+        <nav className="hidden md:flex gap-6 text-gray-700">
+          <Link to="/" className="hover:text-yellow-600 font-medium  hover:underline">Home</Link>
+          <Link to="/products" className="hover:text-yellow-600 font-medium  hover:underline">Products</Link>
+          <a href="https:www.droneanatomy.com/about" className="hover:text-yellow-600 font-medium hover:underline">About</a>
+          <a href="https:www.droneanatomy.com/contact" className="hover:text-yellow-600 font-medium hover:underline">Contact</a>
           {/* <Link to="/cart" className="hover:text-yellow-300">Cart</Link> */}
         </nav>
 
@@ -59,7 +59,7 @@ const Header: React.FC = () => {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="flex flex-col gap-4 px-4 items-center mt-20">
+        <ul className="flex flex-col gap-4 px-4 items-center mt-20 text-gray-800">
           <li>
             <Link
               to="/"

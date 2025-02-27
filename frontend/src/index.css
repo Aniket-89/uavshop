@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&family=Oxygen:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 
 @layer base {
 
     body {
         @apply text-base min-h-[100vh] transition-all duration-300 overflow-x-hidden;
+        font-family: "Maven Pro", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
     }
+
     a {
         @apply text-base text-[17px];
     }
@@ -16,4 +23,9 @@
 
 p[data-f-id="pbf"] {
     display: none !important;
+}
+
+
+.product-list {
+    scrollbar-width: none;
 }

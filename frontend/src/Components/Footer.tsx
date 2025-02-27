@@ -2,13 +2,13 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white py-12">
+    <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8  max-w-7xl">
         {/* About Company */}
         <div >
-          <h3 className="text-lg font-bold mb-4">Drone Anatomy</h3>
-          <a className="mb-2 block hover:text-blue-300" href="https://www.droneanatomy.com/">Official Website</a>
-          <a className="mb-2 block hover:text-blue-300" href="https://www.droneanatomy.com/about">About Us</a>
+          <h3 className="text-lg font-bold mb-4 font-heading text-slate-200">Drone Anatomy</h3>
+          <a className="mb-2 block hover:text-gray-300" href="https://www.droneanatomy.com/">Official Website</a>
+          <a className="mb-2 block hover:text-gray-300" href="https://www.droneanatomy.com/about">About Us</a>
           <p className="mb-2">
             
           </p>
@@ -16,8 +16,8 @@ const Footer: React.FC = () => {
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-          <a className="mb-2 block hover:text-blue-300" href="https://www.droneanatomy.com/contact">Contact Form</a>
+          <h3 className="text-lg font-bold mb-4 font-heading text-slate-200">Contact Us</h3>
+          <a className="mb-2 block hover:text-gray-300" href="https://www.droneanatomy.com/contact">Contact Form</a>
           <span>Phone: <a href="tel:+918130589012" className="mb-2 text-blue-400 hover:underline">(+91) 81305 89012</a></span>
           <p className="mb-2">
             Email:{" "}
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
 
         {/* Policies & Support */}
         <div>
-          <h3 className="text-lg font-bold mb-4">Policies</h3>
+          <h3 className="text-lg font-bold mb-4 font-heading text-slate-200">Policies</h3>
           <p className="mb-2">Shipping &amp; Payment</p>
           <p className="mb-2">Service Terms</p>
           <p className="mb-2">Privacy Policy</p>
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
 
         {/* Social Links */}
         <div>
-          <h3 className="text-lg font-bold mb-4">Social Links</h3>
+          <h3 className="text-lg font-bold mb-4 font-heading text-slate-200">Social Links</h3>
           <ul>
             <li className="mb-2">
               <a

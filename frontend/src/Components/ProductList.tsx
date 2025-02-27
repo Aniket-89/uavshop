@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import { API_BASE_URL } from '../config';
+import SkeletonCardLoading from './SkeletonCardLoading';
 
 interface Product {
   id: string;
@@ -39,11 +40,19 @@ const ProductList: React.FC = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return <div>Loading products...</div>;
-  if (error) return <div className='flex justify-center items-center h-[60vh] text-3xl font-semibold'>Error: {error}</div>;
+  if (loading) return (
+    <div className="grid grid-cols-2 md:grid-cols-3 place-items-center lg:flex mx-auto justify-center w-full gap-4">
+      {[...Array(4)].map((_, index) => (
+        <SkeletonCardLoading key={index} />
+      ))}
+    </div>
+  );
+  
+  
+  if (error) return <div className='flex justify-center items-center h-[60vh] text-3xl font-semibold text-red-400'>Error: {error}</div>;
 
   return (
-    <div className="product-list grid grid-cols-2 md:grid-cols-3 place-items-center lg:flex overflow-auto w-full justify-center flex-wrap gap-2 mx-auto">
+    <div className="product-list grid grid-cols-2 md:grid-cols-3 place-items-center lg:flex overflow-auto w-full gap-2 mx-auto">
       {products.length > 0 ? (
         products.map((product) => (
           <ProductCard product={product}/>

@@ -19,7 +19,7 @@ const ShopListPage = () => {
             <FilterSection onFilter={(category) => console.log(category)} />
         </div> */}
         <div className="w-full mx-auto md:min-h-[40vh] min-h-[60vh] px-1">
-          <h2 className="text-2xl font-semibold p-4">Products</h2>
+          <h2 className="text-3xl font-bold p-4 my-4 font-heading">Products</h2>
           <ProductList />
         </div>
       </div>

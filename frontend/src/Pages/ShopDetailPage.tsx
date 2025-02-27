@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 // import { useCart } from "../assets/CartContext";
 import Button from "../Components/Button";
 import { API_BASE_URL } from "../config";
+import DetailPageSkeletonLoading from "../Components/DetailPageSkeletonLoading";
 
 interface Product {
   id: number;
@@ -10,6 +11,7 @@ interface Product {
   description: string; // HTML content from API
   summary: string;
   image: string;
+  features: [];
   price: number;
   images: { id: number; image: string }[];
 }
@@ -51,9 +53,11 @@ const ShopDetailPage: React.FC = () => {
   }, [id]);
 
   if (loading)
-    return <div className="text-center mt-10">Loading product details...</div>;
+    return <DetailPageSkeletonLoading />;
+
   if (error)
     return <div className="text-center mt-10 text-red-500">Error: {error}</div>;
+  
   if (!product)
     return (
       <div className="text-center mt-10 text-gray-500">Product not found.</div>
@@ -86,30 +90,36 @@ const ShopDetailPage: React.FC = () => {
 
         {/* Product Details Section */}
         <div className="md:w-1/2 flex flex-col justify-between">
-          <div className="grid gap-4">
-            <h2 className="text-3xl font-bold">{product.name}</h2>
+          <div className="grid gap-6">
+            <h2 className="text-3xl font-bold font-heading">{product.name}</h2>
             <p className="text-2xl font-semibold mt-2 text-gray-800">
-              Rs. {product.price}
+              &#8377;{product.price}
             </p>
-            <p>{product.summary}</p>
+            <ul className="my-4">
+                {product.features.map((feature, index) => (
+                    <li className="list-disc ml-4 font-medium" key={index}>{feature}</li>
+                ))}
+            </ul>
+
           </div>
 
           {/* Add to Cart Button */}
           {/* <Button className="mt-4 w-full md:w-auto" onClick={handleAddToCart}>
             Add to Cart
           </Button> */}
-          <Button className="mt-4 w-full md:w-auto">
+          <Button className="w-full md:w-auto">
             <a href="tel:+918130589012">Call Now</a>
           </Button>
         </div>
       </div>
+
       {/* Full Description Section */}
-      <div className="mt-8 px-6 py-8 bg-gray-100 rounded-lg">
+      <div className="mt-8 px-6 py-8 rounded-lg mx-auto">
         <h2 className="text-2xl font-semibold border-b border-gray-300 pb-2">
           Description
         </h2>
         <div
-          className="mt-4 text-gray-700 grid gap-4 mx-auto"
+          className="mt-4 text-gray-800 space-y-4 mx-auto w-full"
           dangerouslySetInnerHTML={{ __html: product.description }} // Render HTML description
         />
       </div>
