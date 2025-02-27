@@ -30,6 +30,9 @@ env/
 dist/
 build/
 
+static/
+media/
+
 # IDE/editor specific files
 .idea/
 .vscode/
