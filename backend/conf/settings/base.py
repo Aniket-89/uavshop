@@ -38,14 +38,14 @@ FROALA_EDITOR_OPTIONS = {
     'heightMax': 600,  # Optional
 }
 
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
-#     },
-#     "staticfiles": {
-#         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
-#     },
-# }
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+}
 
 REST_FRAMEWORK = {  
     'NON_FIELD_ERRORS_KEY': 'Please try again in some time.',
@@ -72,6 +72,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://your-frontend-domain.com',
     'http://localhost:5173',
     'http://192.168.1.21:5173',
+    'https://main.d2losjnb6rzshe.amplifyapp.com/',
 ]
 
 
@@ -122,7 +123,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

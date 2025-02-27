@@ -15,7 +15,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     <div className="max-w-[260px] lg:min-w-[260px] flex-1 bg-white rounded-sm overflow-hidden shadow-sm group">
       <div className="overflow-hidden w-full aspect-1">
         <img
-          src={`http://127.0.0.1:8000/${product.image}`}
+          src={`${product.image}`}
           alt={product.name}
           className="w-full h-full aspect-1 object-cover object-center aspect-square group-hover:scale-105 transition-transform duration-300 ease-in"
         />
